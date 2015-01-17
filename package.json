@@ -1,0 +1,23 @@
+{
+  "name": "commentator",
+  "version": "0.1.0",
+  "description": "An ultra light-weight commenting system that can be easily added to any web page.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -L",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ColinOrr/commentator.git"
+  },
+  "author": "ColinTheGeek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ColinOrr/commentator/issues"
+  },
+  "homepage": "https://github.com/ColinOrr/commentator",
+  "dependencies": {
+    "koa": "^0.14.0"
+  }
+}
