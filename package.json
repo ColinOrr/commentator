@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/ColinOrr/commentator",
   "dependencies": {
-    "koa": "^0.14.0"
+    "front-matter": "^1.0.0",
+    "koa": "^0.14.0",
+    "q": "^1.4.0"
   }
 }
