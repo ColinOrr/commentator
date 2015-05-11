@@ -11,14 +11,25 @@ app.use(function *(){
 
   var comments = [];
   for(var i = 0; i < files.length; i++) {
-    var file = path.join(folder, files[i]);
-    var text = yield fs.readFile(file, 'UTF-8');
+    var file     = path.join(folder, files[i]);
+    var markdown = yield fs.readFile(file, 'UTF-8');
 
-    var comment = fm(text);
+    var comment = parse(file, markdown);
     comments.push(comment);
   }
 
   this.body = comments;
 });
+
+function parse(file, markdown) {
+  var comment = fm(markdown);
+
+  var pattern = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) (.+)\.md/
+  var parts   = pattern.exec(file);
+  comment.attributes.posted = parts[1];
+  comment.attributes.email  = parts[2];
+
+  return comment;
+}
 
 module.exports = app;
