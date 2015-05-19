@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node --harmony index.js",
-    "test": "mocha"
+    "test": "node_modules/cucumber/bin/cucumber.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,6 @@
     "q": "^1.4.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.4"
+    "cucumber": "^0.4.9"
   }
 }
