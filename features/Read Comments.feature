@@ -2,7 +2,7 @@ Feature: Read Comments
 
 Scenario: Single Comment
 
-  Given the following comment in "data/article/2001-02-03 00:00:00 user@domain.com.md":
+  Given the following file in "data/article/2001-02-03 00:00:00 user@domain.com.md":
     """
     ---
     Author: Forename Surname
