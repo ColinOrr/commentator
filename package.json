@@ -4,8 +4,9 @@
   "description": "An ultra light-weight commenting system that can be easily added to any web page.",
   "main": "index.js",
   "scripts": {
-    "start": "node --harmony index.js",
-    "test": "node --harmony node_modules/cucumber/bin/cucumber.js"
+    "start": "node index.js",
+    "test": "node_modules/cucumber/bin/cucumber.js",
+    "test_current": "node_modules/cucumber/bin/cucumber.js --tags=@current"
   },
   "repository": {
     "type": "git",
@@ -20,11 +21,14 @@
   "dependencies": {
     "front-matter": "^1.0.0",
     "koa": "^0.14.0",
+    "moment": "^2.10.3",
     "q": "^1.4.0"
   },
   "devDependencies": {
+    "chai": "^3.0.0",
     "cucumber": "^0.4.9",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.3.4"
+    "rimraf": "^2.3.4",
+    "zombie": "^4.0.10"
   }
 }

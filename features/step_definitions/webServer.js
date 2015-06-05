@@ -3,18 +3,18 @@ var http   = require('http'),
 
 module.exports = function(){
 
-  var httpServer = null;
+  var httpServer;
 
   //
   //  Hooks
 
-  this.Before(function(callback){
+  this.Before(function(callback) {
     httpServer = http.createServer(server.callback());
     httpServer.listen(3000);
     callback();
   });
 
-  this.After(function(callback){
+  this.After(function(callback) {
     httpServer.close();
     callback();
   });

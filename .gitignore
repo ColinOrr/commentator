@@ -29,3 +29,6 @@ node_modules
 
 # Vagrant
 .vagrant
+
+# Sample Data
+/data
