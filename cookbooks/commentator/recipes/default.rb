@@ -1,12 +1,5 @@
 #
-# Permissions
-
-directory "/usr/local" do
-  owner "vagrant"
-end
-
-#
-# Node JS 0.11
+# io.js v2.2.1
 
 apt_package "nodejs"
 apt_package "npm"
@@ -15,10 +8,17 @@ link "/usr/bin/node" do
   to "/usr/bin/nodejs"
 end
 
-bash "Node 0.11" do
+bash "io.js v2.2.1" do
   code <<-EOH
     npm install -g n
-    n 0.11
+    n io 2.2.1
   EOH
-  not_if { `node -v`.start_with?("v0.11") }
+  not_if { `node -v`.start_with?("v2.2.1") }
+end
+
+#
+# Permissions
+
+bash "Vagrant Permissions" do
+  code "chown -R vagrant /usr/local"
 end
