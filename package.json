@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "node_modules/cucumber/bin/cucumber.js",
-    "test_current": "node_modules/cucumber/bin/cucumber.js --tags=@current"
+    "test_current": "node_modules/cucumber/bin/cucumber.js --tags=@current",
+    "seed": "node_modules/cucumber/bin/cucumber.js --tags=@seed"
   },
   "repository": {
     "type": "git",
