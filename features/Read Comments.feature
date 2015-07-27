@@ -1,6 +1,5 @@
 Feature: Read Comments
 
-@current
 Scenario: Single Comment
 
   Given the following file in "data/article/2001-02-03 00:00:00 user@domain.com.md":
@@ -19,8 +18,21 @@ Scenario: Single Comment
       *Comment* body.
       """
 
-@ignore
+@current
 Scenario: Multiple Comments
+
+  Given the following files:
+    | Path                                                  | Content   |
+    | data/article-A/2001-02-03 00:00:03 user@domain.com.md | Comment A |
+    | data/article-A/2001-02-03 00:00:02 user@domain.com.md | Comment B |
+    | data/article-B/2001-02-03 00:00:01 user@domain.com.md | Comment C |
+  When I retrieve comments from "/article-A"
+  Then the comments are displayed in the following order:
+    | Comment   |
+    | Comment B |
+    | Comment A |
+  And "Comment C" is not displayed
+
 @ignore
 Scenario: No Comments
 @ignore
