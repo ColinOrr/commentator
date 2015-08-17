@@ -15,7 +15,7 @@ app.use(function *(){
     var markdown = yield fs.readFile(file, 'UTF-8');
 
     var comment = parse(file, markdown);
-    comments.push(comment);
+    if (comment) comments.push(comment);
   }
 
   this.body = comments;
@@ -26,6 +26,8 @@ function parse(file, markdown) {
 
   var pattern = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) (.+)\.md/
   var parts   = pattern.exec(file);
+  if (!parts) return null;
+
   comment.attributes.posted = parts[1];
   comment.attributes.email  = parts[2];
 

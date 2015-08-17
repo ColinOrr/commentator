@@ -32,14 +32,18 @@ Scenario: Multiple Comments
     | Comment A |
   And "Comment C" is not displayed
 
-@current
 Scenario: No Comments
 
   Given an empty "data/article" folder
   When I retrieve comments from "/article"
   Then no comments are returned
 
-@ignore
 Scenario: Invalid Path
-@ignore
-Scenario: Invalid Content
+
+  Given the following files:
+    | Path                                                | Content   |
+    | data/article/2001-02-03 00:00:03 user@domain.com.md | Comment A |
+    | data/article/invalid-path.md                        | Comment B |
+    | data/article/2001-02-03 00:00:01 user@domain.com.md | Comment C |
+  When I retrieve comments from "/article"
+  Then "Comment B" is not displayed
