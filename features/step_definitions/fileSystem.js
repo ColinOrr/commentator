@@ -29,6 +29,10 @@ module.exports = function(){
     });
   });
 
+  this.Given(/^an empty "([^"]*)" folder$/, function (folder, callback) {
+    mkdirp(folder, callback);
+  });
+
   //
   //  Hooks
 

@@ -18,7 +18,6 @@ Scenario: Single Comment
       *Comment* body.
       """
 
-@current
 Scenario: Multiple Comments
 
   Given the following files:
@@ -33,8 +32,13 @@ Scenario: Multiple Comments
     | Comment A |
   And "Comment C" is not displayed
 
-@ignore
+@current
 Scenario: No Comments
+
+  Given an empty "data/article" folder
+  When I retrieve comments from "/article"
+  Then no comments are returned
+
 @ignore
 Scenario: Invalid Path
 @ignore

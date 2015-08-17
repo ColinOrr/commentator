@@ -63,6 +63,12 @@ module.exports = function(){
     callback();
   });
 
+  this.Then(/^no comments are returned$/, function (callback) {
+    var comments = JSON.parse(browser.document.body.innerHTML);
+    comments.should.be.empty;
+    callback();
+  });
+
   //
   //  Hooks
 
