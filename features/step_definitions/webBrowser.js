@@ -46,6 +46,23 @@ module.exports = function(){
     callback();
   });
 
+  this.Then(/^the comments are displayed in the following order:$/, function (table, callback) {
+    var comments = JSON.parse(browser.document.body.innerHTML);
+    var expected = table.hashes();
+
+    for (var i = 0; i < expected.length; i++) {
+      comments[i].body.should.equal(expected[i].Comment);
+    }
+
+    callback();
+  });
+
+  this.Then(/^"([^"]*)" is not displayed$/, function (expectedComment, callback) {
+    var comments = JSON.parse(browser.document.body.innerHTML);
+    comments.map(function(c) { return c.body; }).should.not.include(expectedComment);
+    callback();
+  });
+
   //
   //  Hooks
 
