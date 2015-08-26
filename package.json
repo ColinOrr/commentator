@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node_modules/cucumber/bin/cucumber.js",
-    "test_current": "node_modules/cucumber/bin/cucumber.js --tags=@current",
-    "seed": "node_modules/cucumber/bin/cucumber.js --tags=@seed"
+    "test": "node_modules/cucumber/bin/cucumber.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +26,8 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "cucumber": "^0.4.9",
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.2",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.3.4",
     "zombie": "^4.0.10"
