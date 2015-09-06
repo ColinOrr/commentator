@@ -1,11 +1,8 @@
-var gulp   = require('gulp'),
-    shell  = require('gulp-shell'),
-    react  = require('gulp-react'),
-    concat = require('gulp-concat'),
-    http   = require('http'),
-    server = require('./server');
-
-var httpServer;
+var gulp    = require('gulp'),
+    shell   = require('gulp-shell'),
+    react   = require('gulp-react'),
+    concat  = require('gulp-concat'),
+    nodemon = require('gulp-nodemon');
 
 // Builds the client side JavaScript and CSS
 gulp.task('build', function() {
@@ -17,10 +14,10 @@ gulp.task('build', function() {
 
 // Starts the web server, or restarts it if it's already running
 gulp.task('start', function() {
-  if (httpServer) httpServer.close();
-  httpServer = http.createServer(server.callback());
-  httpServer.listen(3000);
-  console.log('Listening on localhost:3000');
+  nodemon({
+    ext: 'js',
+    ignore: ['client/*.js']
+  });
 });
 
 // Runs all of the tests
@@ -41,5 +38,4 @@ gulp.task('seed', shell.task([
 // Starts the web server and watches for changes
 gulp.task('default', ['build', 'start'], function() {
   gulp.watch('client/**/*.jsx', ['build']);
-  gulp.watch('server/**/*.js', ['start']);
 });
