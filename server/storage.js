@@ -2,7 +2,7 @@ var path = require('path'),
     fs   = require('./utilities/fs'),
     fm   = require('front-matter');
 
-function *get() {
+module.exports.get = function *get() {
   var folder = path.join('data', this.request.url);
   var files  = yield fs.readdir(folder);
 
@@ -33,5 +33,3 @@ function parse(file, markdown) {
 
   return comment;
 }
-
-module.exports = get;
