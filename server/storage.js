@@ -2,10 +2,12 @@ var path = require('path'),
     fs   = require('./utilities/fs'),
     fm   = require('front-matter');
 
-module.exports.get = function *get() {
+module.exports.get = function *get(next) {
   var folder = path.join('data', this.request.url);
-  var files  = yield fs.readdir(folder);
+  var exists = fs.exists(folder + '/');
+  if (!exists) return yield next;
 
+  var files  = yield fs.readdir(folder);
   var comments = [];
   for (var i = 0; i < files.length; i++) {
     var file     = path.join(folder, files[i]);
